@@ -22,9 +22,14 @@ The gap being closed is *mechanism*: the exact ordered decision a box makes,
 which stage of which pipeline wrote a given field, and which timer could make
 that field lie. Pitch accordingly:
 
-- Move fast where the ground is already solid. Do not belabour subnetting; the
-  owner architects networks for a bank.
-- Stop hard where it is not. Depth beats coverage, every time.
+- **Do not assume the fundamentals are already solid.** The owner operates this
+  stack professionally, but operational fluency and mechanism are different
+  things, and which parts are genuinely solid is *unverified*. Job title is not
+  evidence. Establish the mechanism properly the first time it is needed —
+  including addressing and subnetting — and let the checkpoint, not an
+  assumption about the reader, decide whether it can be moved through quickly.
+- Move fast only where a passed checkpoint has shown the ground holds.
+- Stop hard where it does not. Depth beats coverage, every time.
 - Explain the mechanism first, the artifact second, vendor syntax third.
 - An expert relearning foundations still deserves adult prose. No baby talk,
   no "imagine a post office."

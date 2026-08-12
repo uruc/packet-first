@@ -31,6 +31,10 @@ Capture on `vEthernet (LabInternal)` and on `Wi-Fi` for the same ping and you
 get two different source addresses for one packet. Neither capture is wrong.
 Either one, read alone, licenses a false conclusion.
 
+The diagram above is a **shape, not an inventory** — the smallest topology that
+produces the problem. Lesson 00 asks you to draw your own path before capturing
+anything, and works with any two taps that have something between them.
+
 The second half is *the instrument itself*, and it is the part most people never
 learn. A capture is taken at a specific position in a specific stack, and the
 layers on either side of that position have already transformed the frame — or
@@ -40,9 +44,14 @@ never handed it over at all.
 
 | # | Lesson | Answers |
 |---|---|---|
-| 00 | Placement — what is upstream of the tap | The claims a capture point does and does not license |
-| 01 | The instrument lies — offload, stripping, and the stack position | Why the packets you see never crossed a wire in that form, and why the ones you don't see still did |
-| 02 | Records that are not packets — flow, log, and schema | What each telemetry form preserves, what it destroys, and how many records one conversation becomes |
+| 00 | [Placement](00-placement.md) | What is upstream of the tap, and which claims a capture point does and does not license |
+| 01 | [The instrument lies](01-the-instrument-lies.md) | Why the packets you see never crossed a wire in that form, and why the ones you don't see still did |
+| 02 | [Records that are not packets](02-records-not-packets.md) | What each telemetry form preserves, what it destroys, and how many records one conversation becomes |
+
+The three questions stack: *where was this taken* (00), *what did the instrument
+do to it* (01), *what function was applied to produce this record* (02). All
+three are answerable before you know anything about networking, which is why
+they come first.
 
 Lesson 01 is the one with no substitute. It covers, concretely:
 

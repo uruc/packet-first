@@ -46,7 +46,7 @@ you are graded on.
 |---|---|---|
 | 00 | [The tap](00-the-tap/) | Every exercise in every later track is read through an instrument; an instrument you don't understand teaches wrong models confidently |
 | 01 | [The link, and what it leaks](01-the-link/) | L2 is where identity is strongest and shortest-lived, and where half of "impossible" results come from |
-| 02 | Addresses, identity, and attribution | An alert is an IP and a timestamp; turning that into a machine and a person is the most common thing you do and the least understood |
+| 02 | Addresses, identity, and attribution | An alert is an IP and a timestamp; turning that into a machine and a person is the most common thing you do and the least understood — and it rests on addressing being genuinely solid, not assumed solid |
 | 03 | Paths, and why your sensor saw half | Traffic reaches sensors by accident of routing; asymmetry and placement decide what detection is even possible |
 | 04 | Sessions | A firewall log line is a session record, not a packet record — you cannot read one without knowing what built it |
 | 05 | Names, and what resolves without asking | The richest telemetry that exists, the most abused covert channel, and the one most easily made invisible |
@@ -73,11 +73,14 @@ host's. Decide from a capture alone whether the sender was on your segment.
 State what a VLAN guarantees and what it doesn't. Explain, mechanically, why
 mitm6 and Responder work and what evidence each leaves.
 
-**02 — Identity.** Resolve an alert IP + timestamp to a machine with a stated
-confidence, and name the specific log sources that would raise it. Explain why
-one laptop appears under six IPv6 addresses in a week and what that does to
-every IP-keyed detection. Explain why a FortiGate log says `user="jdoe"` for a
-session jdoe did not make.
+**02 — Identity.** Given an address and a prefix, on either stack, state without
+hesitation what is local and what is not — and say what the box does differently
+in each case, because that fork is the branch every later track elaborates on.
+Say which stack a connection will use before it is made, and why. Resolve an
+alert IP + timestamp to a machine with a stated confidence, and name the
+specific log sources that would raise it. Explain why one laptop appears under
+six IPv6 addresses in a week and what that does to every IP-keyed detection.
+Explain why a FortiGate log says `user="jdoe"` for a session jdoe did not make.
 
 **03 — Paths.** Predict which sensors a given flow will and will not cross
 *before* deploying one. Diagnose "we only see one direction" as routing
