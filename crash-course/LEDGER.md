@@ -26,56 +26,116 @@ Written **before** running anything. Leave wrong predictions in the file — the
 record of what was wrong is the most useful thing here, and it says what to
 re-test in a month.
 
+Fill in the three lines under each item. Type after the arrow; nothing has to
+line up. If **pred** and **actual** match, write `match` on the diff line and
+move on — the diff line only earns its space when you were wrong.
+
 ## Block 0
 
-| # | Prediction | Actual | Diff |
-|---|---|---|---|
-| 1 | dst MAC for gateway ping / for `1.1.1.1` ping: | | |
-| 2 | Frame size of `ping -n 1 1.1.1.1` echo request, in bytes: | | |
-| 3 | Reply TTL from `1.1.1.1`; inferred initial TTL and hop count: | | |
+**0.1 — Destination MAC: gateway ping vs `1.1.1.1` ping. Same or different, and whose?**
+- pred →
+- actual →
+- diff →
 
-**Notes:**
+**0.2 — Frame size of the `ping -n 1 1.1.1.1` echo request, in bytes**
+- pred →
+- actual →
+- diff → _(if off: which header was mis-sized?)_
 
-_(if prediction 2 was off, which header was mis-sized?)_
+**0.3 — Reply TTL from `1.1.1.1`; inferred initial TTL and hop count**
+- pred →
+- actual →
+- diff →
 
 ## Block 1a
 
-| # | Prediction | Actual | Diff |
-|---|---|---|---|
-| A1 | Local destination — local/remote, next hop, interface: | | |
-| A2 | Remote destination — local/remote, next hop, interface: | | |
-| A3 | Boundary-case destination — local/remote, next hop, interface: | | |
-| B | Five random prefixes: correct count, and time per prefix: | | |
-| C | **[home PC]** `diagnose ip route lookup` — interface and gateway for each: | | |
+**1a.A1 — Local destination: local/remote, next hop, interface**
+- pred →
+- actual →
+- diff →
 
-**Total IPv6 addresses on `lx0r` right now:** _(hands-on 4)_
+**1a.A2 — Remote destination: local/remote, next hop, interface**
+- pred →
+- actual →
+- diff →
+
+**1a.A3 — Boundary-case destination: local/remote, next hop, interface**
+- pred →
+- actual →
+- diff →
+
+**1a.B — Five random prefixes: how many correct, and seconds per prefix**
+- pred →
+- actual →
+- diff →
+
+**1a.C — [home PC] `diagnose ip route lookup`: interface and gateway for each**
+- pred →
+- actual →
+- diff →
+
+**Total IPv6 addresses on `lx0r` right now** _(hands-on 4)_ →
 
 ## Block 1b
 
-| # | Prediction | Actual | Diff |
-|---|---|---|---|
-| A | Can the six /24s be summarised into one route? (answer before computing) | | |
-| B1 | **[home PC]** connected subnet count: | | |
-| B2 | **[home PC]** total route count: | | |
-| B3 | The gap, and which cause you'd bet on: | | |
-| C | **[home PC]** largest address group member count: | | |
+**1b.A — Can the six /24s be summarised into one route? Answer on instinct, before computing.**
+- pred →
+- actual →
+- diff →
 
-**Plan audit (hands-on 2) — number of sites/zones that are NOT one prefix:**
+**1b.B1 — [home PC] connected subnet count**
+- pred →
+- actual →
+- diff →
+
+**1b.B2 — [home PC] total route count**
+- pred →
+- actual →
+- diff →
+
+**1b.B3 — The gap between B1 and B2, and which cause you'd bet on**
+- pred →
+- actual →
+- diff →
+
+**1b.C — [home PC] largest address group, member count**
+- pred →
+- actual →
+- diff →
+
+**Plan audit** _(hands-on 2)_ — sites or zones that are NOT one prefix →
 
 ## Block 1c
 
-| # | Prediction | Actual | Diff |
-|---|---|---|---|
-| A1 | v4 neighbour count; Reachable vs Stale split: | | |
-| A2 | v6 neighbour count; Reachable vs Stale split: | | |
-| B | ARP frames between flush and first ping, and direction: | | |
-| C | **[home PC]** ARP entry count; largest age; which rows vanish in 60 s: | | |
-| D | **[home PC]** DHCP pool range from the plan; lease count: | | |
+**1c.A1 — v4 neighbour count; Reachable vs Stale split**
+- pred →
+- actual →
+- diff →
 
-**`ping -6 ff02::1` reply count on this segment:** _(hands-on 2)_
+**1c.A2 — v6 neighbour count; Reachable vs Stale split**
+- pred →
+- actual →
+- diff →
 
-**Router advertisements observed on this segment, and from what:** _(hands-on 4 —
-"none observed" is a real finding; record the date)_
+**1c.B — ARP frames between the flush and the first ping, and their direction**
+- pred →
+- actual →
+- diff →
+
+**1c.C — [home PC] ARP entry count; largest age; which rows vanish in 60 s**
+- pred →
+- actual →
+- diff →
+
+**1c.D — [home PC] DHCP pool range predicted from the plan; lease count**
+- pred →
+- actual →
+- diff →
+
+**`ping -6 ff02::1` reply count on this segment** _(hands-on 2)_ →
+
+**Router advertisements observed on this segment, and from what** _(hands-on 4 —
+"none observed" is a real finding; record the date)_ →
 
 ---
 
