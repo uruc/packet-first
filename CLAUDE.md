@@ -1,4 +1,4 @@
-# CLAUDE.md — network-study
+# CLAUDE.md — packet-first
 
 A foundations-up rebuild of networking knowledge for a **security engineer**,
 aimed at one outcome: a packet capture, a firewall log, a proxy decision, or a
@@ -139,8 +139,19 @@ lesson starts drifting into any of these, that is a signal it has left the goal.
 ## Commit policy
 
 Commit after each lesson is written or each checkpoint is recorded. Message
-form: `Track NN: <lesson> — <what changed>`. **Do not push without asking** —
-no remote is configured yet.
+form: `Track NN: <lesson> — <what changed>`, or `crash-course: <what changed>`
+for the parallel lane.
+
+**Do not push without asking.** The remote is
+`github.com/uruc/packet-first` and it is **public** — so the no-secrets rule is
+not a hygiene preference here, it is the actual threat model. Lab addresses
+(`10.99.99.x`) and machine names are already published and are fine. Anything
+naming the employer, a production address, a real policy or a real log line is
+not, and does not go in this repo at all.
+
+**Local directory is still `network-study/`.** The repo was renamed on GitHub;
+the folder on disk was deliberately not, because the sibling repos' CLAUDE.md
+refers to it by path.
 
 ## Cross-repo
 

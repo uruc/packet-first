@@ -1,11 +1,23 @@
-# network-study
+# packet-first
 
-Networking fundamentals rebuilt from the ground up, aimed at one outcome: a
-packet capture, a firewall log, a proxy decision, or a detection that fired
-makes sense **at the mechanism level** rather than by pattern-match.
+Networking rebuilt from the packet up, for a security engineer, aimed at one
+outcome: a packet capture, a firewall log, a proxy decision, or a detection that
+fired makes sense **at the mechanism level** rather than by pattern-match.
 
 Started 2026-08-12. Re-aimed 2026-08-12 after an adversarial review of the
-original track map.
+original track map. Renamed from `network-study` 2026-08-12.
+
+## Two lanes
+
+| | Aim | Where |
+|---|---|---|
+| **The nine tracks** | Read evidence at the mechanism level. Given an artifact, know what made it and where it lies. | this README, below |
+| **The crash course** | Understand design rationale. Given a deployment, know why it was built that way and what would change if it weren't. | [crash-course/](crash-course/) |
+
+They share a subject and almost nothing else. The tracks work backwards from an
+artifact you were handed; the crash course works forwards from a problem someone
+had to solve. Run either alone, or both in parallel — they have separate ledgers
+and neither gates the other.
 
 ## Why this exists
 
