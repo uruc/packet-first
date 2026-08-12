@@ -149,9 +149,9 @@ not a hygiene preference here, it is the actual threat model. Lab addresses
 naming the employer, a production address, a real policy or a real log line is
 not, and does not go in this repo at all.
 
-**Local directory is still `network-study/`.** The repo was renamed on GitHub;
-the folder on disk was deliberately not, because the sibling repos' CLAUDE.md
-refers to it by path.
+Repo, remote and local folder are all `packet-first` as of 2026-08-12; the
+folder was previously `network-study/`. Old clones and links still resolve —
+GitHub redirects the renamed repo.
 
 ## Cross-repo
 
