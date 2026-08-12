@@ -30,6 +30,7 @@ repeats — that's the design working.
 
 | # | Track | The question it answers |
 |---|---|---|
+| 00 | [Seeing the network](00-seeing-the-network/) | How do you look at a network and trust what you see? Capture placement, the cross-platform toolkit, diagnostic method |
 | 01 | [Foundations](01-foundations/) | What is a link, why did we break the network into pieces, and how does a box decide whether a destination is local? |
 | 02 | Switching & segmentation | VLANs, trunking, STP, ARP as a protocol, and the L2 attack surface |
 | 03 | Routing | Route tables, RIB vs FIB, selection and tiebreakers, ECMP, OSPF, BGP, VRFs, policy routing |
@@ -39,9 +40,25 @@ repeats — that's the design working.
 | 07 | SD-WAN & SASE | Performance SLA, rule evaluation order, ADVPN, overlay design, SASE edge |
 | 08 | Availability & operations | HA (FGCP/FGSP), FortiManager/FortiAnalyzer, logging pipelines, diagnostic methodology |
 
-Tracks 01–04 are vendor-neutral mechanism. Track 05 is where it converges: the
-FortiOS pipeline is only learnable once you know what each stage is *doing*.
-Tracks 06–08 are elaboration on that pipeline.
+Track 00 is a toolkit, not a model — it builds no theory, it makes the later
+exercises trustworthy. Tracks 01–04 are vendor-neutral mechanism. Track 05 is
+where it converges: the FortiOS pipeline is only learnable once you know what
+each stage is *doing*. Tracks 06–08 are elaboration on that pipeline.
+
+## Two things that are deliberately not tracks
+
+**IPv6** is covered *alongside* v4 in the lessons where addressing and address
+resolution happen, not bolted on at the end. Partly because a v6 track at
+position 09 is a track nobody reaches — and partly because comparing ND against
+ARP is the clearest available explanation of what ARP is *for*: the same
+problem, solved twice, the second time by people who had seen the first
+attempt.
+
+**"Everything is a cache with a timer"** is a theme, not a lesson. MAC table
+aging, ARP cache lifetime, session TTL, route holddown, SLA probe intervals,
+DNS TTL — the same shape recurring at every layer, each with its own failure
+mode when the timer and reality disagree. Each lesson names its timers; the
+pattern accumulates rather than being taught once.
 
 ## Status
 

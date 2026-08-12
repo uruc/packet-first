@@ -38,6 +38,16 @@ answered from memory, in `PROGRESS.md`, before the next lesson is written or
 read. A soft answer means the lesson repeats — that is a success condition of
 the design, not a failure.
 
+**IPv6 rides along, it does not get deferred.** Any lesson touching addressing
+or address resolution covers v6 next to v4 in the same breath. Do not write a
+"and now IPv6" section at the end of a lesson, and do not promise a v6 track
+later. ND-vs-ARP comparisons are encouraged — they explain both.
+
+**Name the timers.** Nearly every mechanism in networking is a cache with an
+expiry, and most confusing failures are a timer disagreeing with reality. Each
+lesson states which caches it introduced and what happens when they age out.
+This accumulates into a theme; do not teach it as a standalone lesson.
+
 **Hands-on is the point.** Every lesson carries exercises. They run on gear the
 owner has: `lx0r` (this laptop — Hyper-V, WSL2, Wireshark), the home PC
 (Hyper-V AD lab, Docker/WSL2 `lab-splunk`, the physical FortiGates), or `VEGAS`

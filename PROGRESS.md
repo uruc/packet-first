@@ -9,6 +9,17 @@ Only `checkpoint passed` unlocks the next lesson.
 
 ---
 
+## Track 00 — Seeing the network
+
+| Lesson | Status | Checkpoint passed |
+|---|---|---|
+| 00 — Where you stand determines what you can conclude | not started | — |
+| 01 — The toolkit, one question at a time | not started | — |
+| 02 — Diagnostic method | not started | — |
+
+Lessons 00 and 01 come before Track 01's hands-on. Lesson 02 pairs with
+Track 05 and can wait.
+
 ## Track 01 — Foundations
 
 | Lesson | Status | Checkpoint passed |
