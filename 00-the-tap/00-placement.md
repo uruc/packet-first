@@ -69,9 +69,9 @@ Take a Hyper-V topology with a firewall VM between an internal switch and the
 host's own uplink. It contains a double rewrite:
 
 ```
-internet ◀ WiFi ◀ WinNAT ◀ [Default Switch] ─ port1 ┐
-                                                    │ firewall VM
-host ── vEthernet (LabInternal) ─ [LabInternal] ─ port2 ┘
+internet ◀ WiFi ◀ WinNAT ◀ [LabWAN] ─ port1 ┐
+                                            │ firewall VM
+client VM ─ [Lab-Internal] ──────────── port2 ┘
 ```
 
 > **This is a shape, not an inventory.** It is drawn this way because it is the
@@ -81,22 +81,29 @@ host ── vEthernet (LabInternal) ─ [LabInternal] ─ port2 ┘
 > with a single rewrite (the host's own NAT to the internet) or with any two
 > taps that have anything at all between them.
 
-A ping from the host to the internet crosses two address rewrites: the firewall
-VM's, then WinNAT's. There are three places to tap, and each licenses a
+Traffic from the client to the internet crosses two address rewrites: the
+firewall VM's, then WinNAT's. There are three places to tap, and each licenses a
 different set of claims:
 
-- **`vEthernet (LabInternal)`** — before both rewrites. The source address here
-  is the host's real address. This tap can tell you *who originated the traffic*
+- **The client's own NIC** — before both rewrites. The source address here is
+  the client's real address. This tap can tell you *who originated the traffic*
   and cannot tell you *what the internet saw*.
-- **`Default Switch`** — between the two rewrites. Neither the original source
-  nor the final one.
+- **The host's `LabWAN` vNIC** — between the two rewrites. Neither the original
+  source nor the final one.
 - **`Wi-Fi`** — after both. This tap can tell you what left the machine and
   cannot tell you who inside originated it.
 
-Capture the same ping at the first and last and you get two different source
+Capture the same flow at the first and last and you get two different source
 addresses for one packet. **Neither capture is wrong.** Either one, read alone,
 licenses a false conclusion — and the false conclusion looks exactly like a true
 one, because a capture never announces what it is missing.
+
+Note what the middle tap is *not*: the client is a separate VM, not the Windows
+host. If the host were the client, it would be both the origin of the traffic
+and the firewall's upstream router — one routing table serving two roles — and
+any route sending its traffic into the firewall would loop it straight back. The
+lesson here is about placement, and that is a placement failure in the topology
+itself rather than in the tap.
 
 ## The same tap, different epistemics per stack
 
@@ -203,15 +210,19 @@ all** — an invisible tap point is worth knowing about before you need it.
 ### 3. Predict, then check
 
 Pick one destination and one ping. Before running anything, write down the
-source address you expect to see at `vEthernet (LabInternal)` and at `Wi-Fi`.
+source address you expect to see at the host's `LabWAN` vNIC and at `Wi-Fi`.
 
 Then capture on both simultaneously — two Wireshark instances, or select both
-interfaces in one capture — and run the ping.
+interfaces in one capture — and generate the traffic **from the client**, not
+from the host. Traffic the host originates has not crossed the firewall and will
+not show the first rewrite.
 
-*Expected:* the same ICMP exchange appears in both, with different source
-addresses, because two rewrites sit between them. The `Wi-Fi` view should show
-the address your Wi-Fi adapter holds on your home network; the `LabInternal`
-view should show the lab-side host address.
+*Expected:* the same exchange appears in both, with different source addresses,
+because a rewrite sits between them. The `Wi-Fi` view should show the address
+your Wi-Fi adapter holds on your home network; the `LabWAN` view should show the
+firewall's own WAN-side address — **not** the client's, because the firewall has
+already translated it. The client's real address is only visible at a third tap,
+on the client itself.
 
 The number that matters is not the addresses. It is **whether your written
 prediction matched.** A wrong prediction here is the most valuable outcome

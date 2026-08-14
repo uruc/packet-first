@@ -18,22 +18,29 @@ It has no prerequisites, and Track 01's first exercise already needs it.
 > acted on the packet — including the capture stack itself.**
 
 Two halves to that. The first is *placement*: what is upstream of the tap. The
-worked example is already in hand — the Hyper-V lab topology, where a FortiGate
-SNATs and then WinNAT SNATs again:
+worked example is already in hand — the Hyper-V lab on `lx0r`, where a FortiGate
+SNATs and then the Windows host's NAT SNATs again:
 
 ```
-internet ◀ WiFi ◀ WinNAT ◀ [Default Switch] ─ port1 ┐
-                                                    │ FortiGate-VM
-host ── vEthernet (LabInternal) ─ [LabInternal] ─ port2 ┘
+internet ◀ WiFi ◀ WinNAT ◀ [LabWAN] ─ port1 ┐
+                                            │ FortiGate-VM
+client VM ─ [Lab-Internal] ──────────── port2 ┘
 ```
 
-Capture on `vEthernet (LabInternal)` and on `Wi-Fi` for the same ping and you
-get two different source addresses for one packet. Neither capture is wrong.
-Either one, read alone, licenses a false conclusion.
+Capture on the client, on the host's `LabWAN` vNIC, and on `Wi-Fi` for one
+outbound flow, and the same conversation carries **three different source
+addresses**. No capture is wrong. Any one of them, read alone, licenses a false
+conclusion.
 
 The diagram above is a **shape, not an inventory** — the smallest topology that
 produces the problem. Lesson 00 asks you to draw your own path before capturing
 anything, and works with any two taps that have something between them.
+
+> The client is a separate VM rather than the Windows host, and that is not
+> incidental. A host that is *both* the client and the firewall's upstream router
+> has one routing table serving both roles, and any route pointing into the lab
+> loops the traffic straight back. Build notes and the failure in full are in
+> `fortinet-sdwan-lab/study-lab/`.
 
 The second half is *the instrument itself*, and it is the part most people never
 learn. A capture is taken at a specific position in a specific stack, and the
