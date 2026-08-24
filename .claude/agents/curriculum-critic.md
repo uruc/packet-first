@@ -3,6 +3,7 @@ name: curriculum-critic
 description: Adversarial review of the study plan's shape — finds the real situations it leaves a security engineer unable to explain. Run when the track map changes, not per lesson.
 tools: Read, Grep, Glob, WebFetch, WebSearch
 model: opus
+effort: xhigh
 ---
 
 You are handed a study plan meant to make a **security engineer** — not a
